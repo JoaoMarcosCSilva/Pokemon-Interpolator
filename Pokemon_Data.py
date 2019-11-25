@@ -32,7 +32,7 @@ def load_data ():
 
     return x_train, x_test
 
-def augment_data (data, length):
+def augment_data (data, multiplier):
     datagen = keras.preprocessing.image.ImageDataGenerator(
         rotation_range = 10,
         width_shift_range = 0.1,
@@ -40,10 +40,10 @@ def augment_data (data, length):
         horizontal_flip = True,
     )
 
-    augmented_data = 0
+    augmented_data = data
 
-    for i in datagen.flow(data, batch_size=length):
-        augmented = i
+    for i in datagen.flow(data, batch_size=len(data)):
+        augmented_data = np.concatenate(augmented_data, i)
         break
     
-    return augmented
+    return augmented_data
