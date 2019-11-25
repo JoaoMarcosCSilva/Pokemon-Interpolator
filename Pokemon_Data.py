@@ -1,8 +1,3 @@
-try:
-    import kaggle
-except:
-    print('Please install the kaggle library')
-
 import os
 import imageio
 import glob
@@ -14,6 +9,12 @@ from sklearn.model_selection import train_test_split
 def download_data (kaggle_json_dict):
     os.environ['KAGGLE_USERNAME'] = kaggle_json_dict['username'] # username from the json file 
     os.environ['KAGGLE_KEY'] = kaggle_json_dict['key'] # key from the json file
+
+    try:
+        import kaggle
+    except:
+        print('Please install the kaggle library')
+
 
     kaggle.api.authenticate()
     kaggle.api.dataset_download_files('brilja/pokemon-mugshots-from-super-mystery-dungeon',path = 'Data', unzip=True)
