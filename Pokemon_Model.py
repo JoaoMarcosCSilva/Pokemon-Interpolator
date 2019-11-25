@@ -28,7 +28,7 @@ def get_Encoder(Layers, Hidden_Channels, Starting_Channels):
 
 def get_Decoder(Layers, Hidden_Shape, Encoder_Starting_Channels):
 
-    inputs = Input(shape = (Hidden_Shape[1:]))
+    inputs = Input(shape = (Hidden_Shape))
     x = inputs
     
     x = Conv2D(Hidden_Shape[-1]*2, 3, activation = 'relu', padding = 'same')(x)
@@ -50,3 +50,10 @@ def get_Decoder(Layers, Hidden_Shape, Encoder_Starting_Channels):
     print("Output image's shape: ", Decoder.output_shape)
 
     return Decoder
+
+def get_Model (Layers, Hidden_Channels, Starting_Channels):
+    inputs = Input(shape = (64,64,3))
+    Encoder = get_Encoder(Layers, Hidden_Channels, Starting_Channels)(inputs)
+    Decoder = get_Decoder(Layers, Encoder.output_shape[1:], Starting_Channels)(Encoder)
+    Model = keras.Model(inputs, Decoder)
+    return Encoder, Decoder, Model
