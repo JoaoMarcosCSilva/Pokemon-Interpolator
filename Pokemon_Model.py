@@ -1,4 +1,3 @@
-%tensorflow_version 2.x
 from tensorflow import keras
 from tensorflow.keras.layers import Conv2D, Input, BatchNormalization, Flatten, Dense, MaxPooling2D, UpSampling2D
 
