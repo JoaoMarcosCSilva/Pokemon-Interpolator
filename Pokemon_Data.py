@@ -2,7 +2,15 @@ try:
     import kaggle
 except:
     print('Please install the kaggle library')
-    
+
+import os
+import imageio
+import glob
+
+import numpy as np
+from tensorflow import keras
+from sklearn.model_selection import train_test_split
+
 def download_data (kaggle_json_dict):
     os.environ['KAGGLE_USERNAME'] = kaggle_json_dict['username'] # username from the json file 
     os.environ['KAGGLE_KEY'] = kaggle_json_dict['key'] # key from the json file
