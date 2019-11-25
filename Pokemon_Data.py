@@ -1,6 +1,6 @@
 try:
     import kaggle
-except e:
+except:
     print('Please install the kaggle library')
     
 def download_data (kaggle_json):
