@@ -3,9 +3,9 @@ try:
 except:
     print('Please install the kaggle library')
     
-def download_data (kaggle_json):
-    os.environ['KAGGLE_USERNAME'] = kaggle_token['username'] # username from the json file 
-    os.environ['KAGGLE_KEY'] = kaggle_token['key'] # key from the json file
+def download_data (kaggle_json_dict):
+    os.environ['KAGGLE_USERNAME'] = kaggle_json_dict['username'] # username from the json file 
+    os.environ['KAGGLE_KEY'] = kaggle_json_dict['key'] # key from the json file
 
     kaggle.api.authenticate()
     kaggle.api.dataset_download_files('brilja/pokemon-mugshots-from-super-mystery-dungeon',path = 'Data', unzip=True)
