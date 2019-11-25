@@ -40,8 +40,10 @@ def augment_data (data, length):
         horizontal_flip = True,
     )
 
-    for i in datagen.flow(x_train, batch_size=length):
-        x_train_aug = i
+    augmented_data = 0
+
+    for i in datagen.flow(data, batch_size=length):
+        augmented = i
         break
     
-    return x_train_aug
+    return augmented
