@@ -1,7 +1,7 @@
 try:
-        import kaggle
-    except e:
-        print('Please install the kaggle library')
+    import kaggle
+except e:
+    print('Please install the kaggle library')
     
 def download_data (kaggle_json):
     os.environ['KAGGLE_USERNAME'] = kaggle_token['username'] # username from the json file 
